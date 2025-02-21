@@ -93,6 +93,7 @@ span{
 section{
   min-height: 100vh;
   padding: 10rem 15%;
+  scroll-margin-top: 8rem;
 }
 .home{
   display: flex;
@@ -206,13 +207,13 @@ section{
   left: 100%;
 }
 
-.btn-group a:nth-of-type(2){
+.btn-group a:nth-of-type(1){
   background-color: black;
   color: var(--main-color);
   border: 2px solid var(--main-color);
   box-shadow: 0 0 25px transparent;
 }
-.btn-group a:nth-of-type(2):hover{
+.btn-group a:nth-of-type(1):hover{
   box-shadow: 0 0 25px var(--main-color);
   background-color: var(--main-color);
   color: black;
@@ -235,13 +236,13 @@ box-shadow: 0 2px 10px var(--main-color);
 }
 
 .about {
-  display: block;
-  padding: 10rem 15%;
-  text-align: center;
+  padding: 5rem 15% !important; /* Reduce vertical padding */
+  min-height: auto !important; /* Remove forced 100vh height */
 }
 
 .about-content {
-  max-width: 100%;
+  max-width: 800px; /* Constrain width for better readability */
+  margin: 0 auto; /* Center content */
 }
 
 /* Remove read more button styles */
@@ -480,6 +481,9 @@ box-shadow: 0 2px 10px var(--main-color);
   #menu-icon{
     display: block;
   }
+  section {
+    scroll-margin-top: 6rem;
+  }
   .navbar{
     position: absolute;
     top: 100%;
@@ -543,13 +547,13 @@ box-shadow: 0 2px 10px var(--main-color);
 .skills-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  gap: 2rem;
   margin: 3rem 0;
 }
 
 .skill-card {
   background: var(--second-bg-color);
-  padding: 2.5rem;
+  padding: 1.5rem;
   border-radius: 2rem;
   border: 2px solid var(--main-color);
   transition: all 0.3s ease;
@@ -561,9 +565,9 @@ box-shadow: 0 2px 10px var(--main-color);
 }
 
 .skill-card h3 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: var(--main-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -572,7 +576,7 @@ box-shadow: 0 2px 10px var(--main-color);
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .skill-list li {
@@ -701,5 +705,41 @@ box-shadow: 0 2px 10px var(--main-color);
   .timeline-item::before {
     left: -35px !important;
     right: auto !important;
+  }
+}
+
+/* Timeline List Styles */
+.timeline-list {
+  list-style: none;
+  padding-left: 2rem;
+  margin: 1.5rem 0;
+}
+
+.timeline-list li {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.timeline-list li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--main-color);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .timeline-list li {
+    font-size: 1.4rem;
+    padding-left: 2rem;
+  }
+  
+  .timeline-list li::before {
+    font-size: 1.6rem;
   }
 }
