@@ -480,26 +480,23 @@ box-shadow: 0 2px 10px var(--main-color);
 @media(max-width:1285px){
   #menu-icon{
     display: block;
+    z-index: 1001;
   }
   section {
     scroll-margin-top: 6rem;
   }
-  .navbar{
+  .navbar {
     position: absolute;
     top: 100%;
+    right: -100%;
+    width: 60%;
+    padding: 1rem 3rem;
+    background: rgba(0,0,0,0.9);
+    transition: 0.3s right ease-in-out;
+  }
+
+  .navbar.active {
     right: 0;
-    width: 50%;
-    padding: 0;
-    background: black;
-    /* border-bottom-left-radius: 2rem;
-    border-left: 2px solid var(--main-color);
-    border-bottom: 2px solid var(--main-color); */
-    border: none;
-    
-    /* New transition properties */
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
   }
   .navbar a{
     display: block;
@@ -741,5 +738,16 @@ box-shadow: 0 2px 10px var(--main-color);
   
   .timeline-list li::before {
     font-size: 1.6rem;
+  }
+}
+
+/* Mobile Icons Fix */
+@media (max-width: 768px) {
+  .social-icons a {
+    margin: 2rem 1rem;
+    font-size: 2.5rem;
+  }
+  .social-icons a i {
+    display: block !important;
   }
 }
