@@ -194,25 +194,57 @@
 
     <section class="contact" id="contact">
       <h2 class="heading">Contact<span> Me</span></h2>
-      <form action = "#">
+      <form id="contactForm">
         <div class="input-group">
           <div class="input-box">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
           </div>
           <div class="input-box">
-            <input type="number" placeholder="Phone Number">
-            <input type="text" placeholder="Subject">
+            <input type="tel" name="phone" placeholder="Phone Number"> <!-- Changed type to "tel" -->
+            <input type="text" name="subject" placeholder="Subject" required>
           </div>
         </div>
-
+    
         <div class="input-group-2">
-          <textarea name="" id=""
-          placeholder="Your message" cols="30" rows="10"></textarea>
+          <textarea name="message" placeholder="Your message" cols="30" rows="10" required></textarea>
           <input type="submit" value="Send Message" class="btn">
+          <input type="text" name="botcheck" style="display:none">
         </div>
       </form>
     </section>
+    
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzInOfOBsgpW7SR18lyVYkkM4ZWxRi_q9BmaaTGjb5YoDfS--Q2VKCO98vIMpRagEgi/exec';
+      const form = document.getElementById('contactForm'); // Changed to getElementById
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        // Add honeypot validation
+        if(form.botcheck.value !== '') {
+          alert('Bot detected!');
+          return;
+        }
+
+        fetch(scriptURL, { 
+          method: 'POST', 
+          body: new FormData(form)
+        })
+        .then(response => {
+          if(response.ok) {
+            alert("Message sent successfully!");
+            form.reset();
+          } else {
+            alert("Error sending message");
+          }
+        })
+        .catch(error => {
+          console.error('Error!', error);
+          alert("Failed to send message");
+        });
+      });
+    </script>
 
     <footer class="footer">
       <div class = "social-icons">
